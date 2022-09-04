@@ -30,7 +30,7 @@ const Shader = (props) => {
 
   useFrame((state, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = meshRef.current.rotation.y += 0.01
+      meshRef.current.rotation.x = meshRef.current.rotation.y += 0.025
     }
     if (meshRef.current.material) {
       meshRef.current.material.uniforms.time.value +=
@@ -43,13 +43,13 @@ const Shader = (props) => {
       ref={meshRef}
       scale={hovered ? 1.1 : 1}
       onClick={() => {
-        router.push(`/box`)
+        router.push(`/`)
       }}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
       {...props}
     >
-      <boxBufferGeometry args={[1, 1, 1]} />
+      <boxBufferGeometry args={[1, 0.1, 2.5]} />
       {/* @ts-ignore */}
       <colorShiftMaterial key={ColorShiftMaterial.key} time={3} />
     </mesh>

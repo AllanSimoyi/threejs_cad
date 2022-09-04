@@ -26,6 +26,7 @@ const LCanvas = ({ children }) => {
 
   return (
     <Canvas
+      // frameloop="demand"
       mode='concurrent'
       style={{
         position: 'absolute',

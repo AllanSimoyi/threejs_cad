@@ -1,8 +1,6 @@
+import BoxComponent from '@/components/canvas/Box'
+import { Canvas } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
-// Step 5 - delete Instructions components
-import Instructions from '@/components/dom/Instructions'
-// import Shader from '@/components/canvas/Shader/Shader'
-
 // Dynamic import is used to prevent a payload when the website start that will include threejs r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
 // If something goes wrong go back to a static import to show the error.
@@ -15,7 +13,9 @@ const Shader = dynamic(() => import('@/components/canvas/Shader/Shader'), {
 const Page = (props) => {
   return (
     <>
-      <Instructions />
+      <div className="flex-col items-center justify-center p-8">
+        <h1>Metallica - Blackened</h1>
+      </div>
     </>
   )
 }
@@ -24,13 +24,16 @@ const Page = (props) => {
 // It will receive same props as Page component (from getStaticProps, etc.)
 Page.r3f = (props) => (
   <>
-    <Shader />
+    {/* <ambientLight />
+    <pointLight position={[10, 10, 10]} /> */}
+    {/* <Shader /> */}
+    <BoxComponent route="/" />
   </>
 )
 
 export default Page
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   return {
     props: {
       title: 'Index',
